@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { montserrat } from "./layout";
+import { montserrat } from "./fonts";
 
 import IntroAnimation from "@/components/IntroAnimation/introAnimation";
 import ScrollIndicator from "@/components/ScrollIndicator/scrollIndicator";
