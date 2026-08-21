@@ -4,6 +4,8 @@ import { geistSans, geistMono, montserrat } from "./fonts";
 
 // components
 import Header from "@/components/Header/header";
+import Intake from "@/components/Intake/intake";
+import Footer from "@/components/Footer/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,6 +25,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
+        <Intake />
+        <Footer />
       </body>
     </html>
   );

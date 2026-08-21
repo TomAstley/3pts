@@ -4,6 +4,8 @@ import { montserrat } from "./fonts";
 import IntroAnimation from "@/components/IntroAnimation/introAnimation";
 import ScrollIndicator from "@/components/ScrollIndicator/scrollIndicator";
 
+import Clients from "@/components/Clients/clients";
+
 export default function Home() {
   return (
     <>
@@ -21,15 +23,15 @@ export default function Home() {
 
         <ScrollIndicator />
       </div>
-      <div className="relative flex justify-center  flex-col h-screen bg-threepts-green">
+      <div id="about" className="relative flex justify-center  flex-col h-screen bg-threepts-green">
         <div className="flex justify-center items-center px-8 gap-8 max-w-7xl">
           <div>
             <h2
-              className={`${montserrat.className} text-5xl uppercase text-white`}
+              className={`${montserrat.className} text-5xl uppercase text-white font-bold`}
             >
               Meet Drew
             </h2>
-            <p className="py-4">
+            <p className={`${montserrat.className} py-4`}>
               Laboris sint tempor irure et. Do tempor ut qui tempor ea enim
               veniam qui in sint magna. Consequat est fugiat do anim qui
               pariatur mollit. Pariatur Lorem laboris aliqua mollit nulla
@@ -47,7 +49,7 @@ export default function Home() {
         </div>
          <ScrollIndicator white />
       </div>
-      <div className="flex justify-center  flex-col h-screen">
+      <div id="services" className="flex justify-center  flex-col h-screen">
         <div className="flex justify-center items-center px-4 gap-8 max-w-7xl">
           <div>
             <h2
@@ -57,8 +59,11 @@ export default function Home() {
             </h2>
           </div>
         </div>
+
+      
         
       </div>
+        <Clients />
     </>
   );
 }

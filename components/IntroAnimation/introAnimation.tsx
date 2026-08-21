@@ -60,6 +60,7 @@ export default function IntroAnimation() {
       gsap.set(s1.current, { filter: `blur(5px) ${shadow}` });
       tl.set(s2.current, { opacity: 0, scale: 0.15, filter: shadow, transformOrigin: "50% 50%" });
       tl.set(s3.current, { opacity: 0, scale: 0.15, filter: shadow, transformOrigin: "50% 50%" });
+      
 
       gsap.set(chars, {
         opacity: 0,
@@ -195,8 +196,8 @@ export default function IntroAnimation() {
       >
         <p className={`${montserrat.className} text-5xl uppercase`}>
           {TEXT.split("").map((char, i) => (
-            <span key={i} className={`intro-char inline-block${i >= THREES_START ? " font-bold" : ""}`}>
-              {char === " " ? " " : char}
+            <span key={i} className={`intro-char opacity-0 inline-block${i >= THREES_START ? " font-bold" : ""}`}>
+              {char === " " ? " " : char}
             </span>
           ))}
         </p>
