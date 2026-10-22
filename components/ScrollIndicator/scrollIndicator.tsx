@@ -24,7 +24,7 @@ export default function ScrollIndicator({
       // Bounce stops after 5s so it isn't endless motion (WCAG 2.2.2).
       style={{
         animationIterationCount: 5,
-        animationDelay: afterIntro ? "7.5s" : undefined,
+        animationDelay: afterIntro ? "var(--intro-delay)" : undefined,
       }}
       className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce transition-opacity duration-300 ${ink ? "text-black" : "text-threepts-dark-green"} ${ink || alwaysVisible || visible ? "opacity-100" : "opacity-0"}`}
     >

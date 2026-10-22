@@ -11,7 +11,6 @@ const THREES_START = TEXT.indexOf("Threes");
 const VIEWBOX = "0 0 273 61";
 const SVG_W = 273;
 const SVG_H = 61;
-const LOCKUP_WIDTH = 500;
 
 const svgProps = {
   width: SVG_W,
@@ -61,20 +60,18 @@ export default function IntroAnimation() {
 
     const shadow = "drop-shadow(0 0 30px rgba(76,189,149,0.95))";
 
-    // Shrink the tagline and the logo lockup so both fit narrow viewports.
-    const available = window.innerWidth - 32;
-    const textScale = Math.min(1, available / textContainerRef.current!.offsetWidth);
-    const k = Math.min(1, available / LOCKUP_WIDTH);
+    // Phones: shrink the tagline to fit and skip the logo lockup, fading the sphere out with the copy.
+    // Keep in sync with --intro-delay in globals.css.
+    const isMobile = window.matchMedia("(max-width: 639px)").matches;
+    const textScale = Math.min(1, (window.innerWidth - 32) / textContainerRef.current!.offsetWidth);
 
     const ctx = gsap.context(() => {
       const chars = gsap.utils.toArray<HTMLElement>(".intro-char");
 
       gsap.set(textContainerRef.current, { scale: textScale });
-      gsap.set(lThreePts.current, { scale: k });
       gsap.set(s1.current, { filter: `blur(5px) ${shadow}` });
-      tl.set(s2.current, { opacity: 0, scale: 0.15 * k, filter: shadow, transformOrigin: "50% 50%" });
-      tl.set(s3.current, { opacity: 0, scale: 0.15 * k, filter: shadow, transformOrigin: "50% 50%" });
-
+      tl.set(s2.current, { opacity: 0, scale: 0.15, filter: shadow, transformOrigin: "50% 50%" });
+      tl.set(s3.current, { opacity: 0, scale: 0.15, filter: shadow, transformOrigin: "50% 50%" });
 
       gsap.set(chars, {
         opacity: 0,
@@ -108,8 +105,14 @@ export default function IntroAnimation() {
       // Phase 2: text fades out, sphere collapses
       tl2.to(textContainerRef.current, { opacity: 0, duration: 0.3, ease: "quad.in" }, 4);
 
+      if (isMobile) {
+        tl.to(s1.current, { opacity: 0, duration: 0.3, ease: "sine.inOut" }, 4);
+        tl2.play();
+        return;
+      }
+
       tl.to(s1.current, {
-        scale: 0.15 * k,
+        scale: 0.15,
         filter: `blur(0px) ${shadow}`,
         y: 0,
         rotate: 180,
@@ -117,33 +120,33 @@ export default function IntroAnimation() {
         ease: "sine.inOut",
       }, 4);
 
-      tl.to(s1.current, { scale: 0.2 * k, duration: 0.12, ease: "sine.out" }, 5)
-        .to(s1.current, { scale: 0.15 * k, x: -180 * k, duration: 0.18, ease: "sine.in" }, 5.12);
+      tl.to(s1.current, { scale: 0.2, duration: 0.12, ease: "sine.out" }, 5)
+        .to(s1.current, { scale: 0.15, x: -180, duration: 0.18, ease: "sine.in" }, 5.12);
 
       tl.to(s2.current, {
-        scale: 0.15 * k,
+        scale: 0.15,
         filter: `blur(0px) ${shadow}`,
         opacity: 1,
-        y: -54 * k,
-        x: -84 * k,
+        y: -54,
+        x: -84,
         rotate: 300,
         duration: 0.5,
         ease: "sine.inOut",
       }, 5);
 
       tl.to(s3.current, {
-        scale: 0.15 * k,
+        scale: 0.15,
         filter: `blur(0px) ${shadow}`,
         opacity: 1,
-        y: 54 * k,
-        x: -84 * k,
+        y: 54,
+        x: -84,
         rotate: 300,
         duration: 0.5,
         ease: "sine.inOut",
       }, 5);
 
       // Phase 3: SVG letters animate in next to spheres
-      tl2.set(lThreePts.current, { opacity: 1, x: 120 * k }, 5.4);
+      tl2.set(lThreePts.current, { opacity: 1, x: 120 }, 5.4);
 
       letters.forEach(({ ref }) => {
         tl2
