@@ -31,7 +31,7 @@ export default function Intake() {
             id="contact-heading"
             ref={successRef}
             tabIndex={-1}
-            className={`${montserrat.className} text-4xl uppercase font-bold text-white mb-4 outline-none`}
+            className={`${montserrat.className} text-4xl uppercase font-bold text-white mb-3.2 outline-none`}
           >
             Got it.
           </h2>
@@ -160,7 +160,7 @@ export default function Intake() {
             onClick={(e) => {
               if (pending) e.preventDefault();
             }}
-            className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-green text-black px-8 py-4 rounded-lg hover:bg-white transition-colors mt-2 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
+            className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-indigo text-white px-8 py-4 rounded-md hover:bg-threepts-indigo-dark transition-colors mt-2 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
           >
             {pending ? "Sending…" : "Send"}
           </button>

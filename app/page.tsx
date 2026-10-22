@@ -30,7 +30,7 @@ export default function Home() {
         </p>
         <a
           href="#contact"
-          className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-green text-black px-8 py-4 rounded-lg hover:bg-threepts-dark-green hover:text-white transition-colors`}
+          className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-indigo text-white px-8 py-4 rounded-md hover:bg-threepts-indigo-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black`}
         >
           Let&apos;s Talk
         </a>

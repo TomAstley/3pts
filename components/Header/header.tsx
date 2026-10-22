@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { montserrat } from "@/app/fonts";
 
-const mobileLinkClass = `${montserrat.className} text-black text-4xl uppercase font-bold`;
+const mobileLinkClass = `${montserrat.className} text-black/85 text-4xl uppercase font-bold`;
 
 export default function Header() {
   const [open, setOpen] = useState(false);

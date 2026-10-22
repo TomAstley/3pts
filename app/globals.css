@@ -3,7 +3,7 @@
 :root {
   color-scheme: light;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #171717d9;
 }
 
 @theme inline {
@@ -11,6 +11,8 @@
   --color-foreground: var(--foreground);
   --color-threepts-green: rgb(75, 188, 148);
   --color-threepts-dark-green: rgb(2, 105, 56);
+  --color-threepts-indigo: #5b3fd1;
+  --color-threepts-indigo-dark: #4630ab;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --animate-fade-in: fade-in 1.5s ease-out 7.5s both;
