@@ -41,6 +41,10 @@ export default function IntroAnimation() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // CSS animations (hero fade-in, nav) run on wall-clock time; without this,
+    // GSAP lag smoothing makes the timeline fall behind after the tab is hidden.
+    gsap.ticker.lagSmoothing(0);
+
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
 
@@ -155,6 +159,7 @@ export default function IntroAnimation() {
     }, textContainerRef);
 
     return () => {
+      gsap.ticker.lagSmoothing(500, 33);
       ctx.revert();
       tl.kill();
       tl2.kill();
