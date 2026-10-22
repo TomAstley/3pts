@@ -16,18 +16,20 @@ export default function Home() {
         className="relative isolate flex justify-center items-center flex-col min-h-screen px-5 animate-fade-in"
       >
         <DiagonalStripes />
-        <h1
-          id="hero-heading"
-          className={`${montserrat.className} text-3xl sm:text-6xl uppercase text-center`}
-        >
-          Communicate in <strong>Threes</strong>
+        <h1 className="text-center">
+          <span
+            id="hero-heading"
+            className={`${montserrat.className} block text-3xl sm:text-6xl uppercase`}
+          >
+            Communicate in <strong>Threes</strong>
+          </span>
+          <span
+            className={`${montserrat.className} block text-2xl my-9 max-w-xl mx-auto`}
+          >
+            Fractional CMO services for the buy side, sell side, and liquidity
+            networks
+          </span>
         </h1>
-        <p
-          className={`${montserrat.className} text-2xl my-9 text-center max-w-xl`}
-        >
-          Fractional CMO services for the buy side, sell side, and liquidity
-          networks
-        </p>
         <a
           href="#contact"
           className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-indigo text-white px-8 py-4 rounded-md hover:bg-threepts-indigo-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black`}
