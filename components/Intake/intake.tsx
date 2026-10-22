@@ -1,79 +1,171 @@
 "use client";
 
+import { useActionState, useEffect, useId, useRef } from "react";
+import { submitContact, ContactState } from "@/app/actions";
 import { montserrat } from "@/app/fonts";
+import SectionHeading from "@/components/SectionHeading/sectionHeading";
 
-const inputClass = `${montserrat.className} w-full bg-white/5 border border-white/80 text-white placeholder-white/90 px-4 py-3 rounded-lg focus:outline-none focus:border-threepts-green transition-colors`;
+const inputClass = `${montserrat.className} w-full bg-white/5 border border-white/80 text-white placeholder-white/60 px-4 py-3 rounded-lg focus:outline-2 focus:outline-offset-2 focus:outline-threepts-green focus:border-threepts-green transition-colors`;
 const labelClass = `${montserrat.className} block text-sm uppercase tracking-widest text-white/90 mb-2`;
 
+const initial: ContactState = { status: "idle" };
+
 export default function Intake() {
+  const [state, action, pending] = useActionState(submitContact, initial);
+  const id = useId();
+  const successRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (state.status === "success") successRef.current?.focus();
+  }, [state.status]);
+
+  if (state.status === "success") {
+    return (
+      <section
+        id="contact"
+        aria-labelledby="contact-heading"
+        className="flex flex-col items-center justify-center w-full min-h-screen bg-black/85 px-6 py-20"
+      >
+        <div className="w-full max-w-2xl">
+          <h2
+            id="contact-heading"
+            ref={successRef}
+            tabIndex={-1}
+            className={`${montserrat.className} text-4xl uppercase font-bold text-white mb-4 outline-none`}
+          >
+            Got it.
+          </h2>
+          <p className={`${montserrat.className} text-white/80`}>
+            Thanks for reaching out — I&apos;ll be in touch shortly.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  const values = state.values;
+
   return (
-    <div id="contact" className="flex flex-col items-center justify-center w-full min-h-screen bg-black/85 px-6 py-20">
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="flex flex-col items-center justify-center w-full min-h-screen bg-black/85 px-6 py-20"
+    >
       <div className="w-full max-w-2xl">
-        <h2 className={`${montserrat.className} text-4xl uppercase font-bold text-white mb-2`}>
+        <SectionHeading id="contact-heading" className="text-4xl sm:text-5xl">
           Let&apos;s Talk
-        </h2>
-        <p className={`${montserrat.className} text-white/80 mb-12`}>
+        </SectionHeading>
+        <p className={`${montserrat.className} text-white/80 mb-4 text-center`}>
           Fill out the form and I&apos;ll be in touch shortly.
         </p>
+        <p className={`${montserrat.className} text-white/80 text-sm mb-12 text-center`}>
+          Fields marked <span aria-hidden="true">*</span>
+          <span className="sr-only">with an asterisk</span> are required.
+        </p>
 
-        <form className="flex flex-col gap-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClass}>First Name</label>
-              <input type="text" placeholder="Jane" className={inputClass} />
-            </div>
-            <div>
-              <label className={labelClass}>Last Name</label>
-              <input type="text" placeholder="Smith" className={inputClass} />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClass}>Email</label>
-              <input type="email" placeholder="jane@example.com" className={inputClass} />
-            </div>
-            <div>
-              <label className={labelClass}>Phone</label>
-              <input type="tel" placeholder="+1 (555) 000-0000" className={inputClass} />
-            </div>
-          </div>
-
+        <form action={action} className="flex flex-col gap-6">
           <div>
-            <label className={labelClass}>How Can I Help</label>
-            <select defaultValue="" className={`${inputClass} appearance-none`}>
-              <option value="" disabled className="bg-black">Select a service…</option>
-              <option value="strategy" className="bg-black">Strategy</option>
-              <option value="media-relations" className="bg-black">Media Relations</option>
-              <option value="content" className="bg-black">Content Creation</option>
-              <option value="social-media" className="bg-black">Social Media</option>
-              <option value="capital-markets" className="bg-black">Capital Markets</option>
-              <option value="other" className="bg-black">Other</option>
-            </select>
-          </div>
-
-          <div>
-            <label className={labelClass}>City</label>
-            <input type="text" placeholder="New York" className={inputClass} />
-          </div>
-
-          <div>
-            <label className={labelClass}>Comments <span className="normal-case tracking-normal text-white/30">(optional)</span></label>
-            <textarea
-              rows={5}
-              placeholder="Anything else you'd like to share…"
-              className={`${inputClass} resize-none`}
+            <label htmlFor={`${id}-name`} className={labelClass}>
+              First Name <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id={`${id}-name`}
+              name="name"
+              type="text"
+              autoComplete="given-name"
+              placeholder="Jane"
+              defaultValue={values?.name}
+              className={inputClass}
+              required
             />
           </div>
 
+          <div>
+            <label htmlFor={`${id}-company`} className={labelClass}>
+              Company
+            </label>
+            <input
+              id={`${id}-company`}
+              name="company"
+              type="text"
+              autoComplete="organization"
+              placeholder="Acme Corp"
+              defaultValue={values?.company}
+              className={inputClass}
+            />
+          </div>
+
+          <div>
+            <label htmlFor={`${id}-email`} className={labelClass}>
+              Email <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id={`${id}-email`}
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="jane@example.com"
+              defaultValue={values?.email}
+              className={inputClass}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor={`${id}-interest`} className={labelClass}>
+              Interest <span aria-hidden="true">*</span>
+            </label>
+            <div className="relative">
+              <select
+                id={`${id}-interest`}
+                name="interest"
+                defaultValue={values?.interest ?? ""}
+                className={`${inputClass} appearance-none pr-12`}
+                required
+              >
+                <option value="" disabled className="bg-black">Select a service…</option>
+                <option value="Strategy" className="bg-black">Strategy</option>
+                <option value="Media Relations" className="bg-black">Media Relations</option>
+                <option value="Content Creation" className="bg-black">Content Creation</option>
+                <option value="Social Media" className="bg-black">Social Media</option>
+                <option value="Capital Markets" className="bg-black">Capital Markets</option>
+                <option value="Other" className="bg-black">Other</option>
+              </select>
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="10"
+                viewBox="0 0 24 14"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white"
+              >
+                <polyline points="2 2 12 12 22 2" />
+              </svg>
+            </div>
+          </div>
+
+          {state.status === "error" && (
+            <p role="alert" className={`${montserrat.className} text-red-400 text-sm`}>
+              {state.message}
+            </p>
+          )}
+
           <button
             type="submit"
-            className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-green text-black px-8 py-4 rounded-lg hover:bg-white transition-colors mt-2`}
+            aria-disabled={pending}
+            onClick={(e) => {
+              if (pending) e.preventDefault();
+            }}
+            className={`${montserrat.className} uppercase tracking-widest text-sm font-bold bg-threepts-green text-black px-8 py-4 rounded-lg hover:bg-white transition-colors mt-2 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
           >
-            Send
+            {pending ? "Sending…" : "Send"}
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 }

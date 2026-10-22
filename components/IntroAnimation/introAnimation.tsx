@@ -39,6 +39,8 @@ export default function IntroAnimation() {
   const divClass = "absolute inset-0 opacity-0";
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
 
@@ -160,7 +162,10 @@ export default function IntroAnimation() {
   }, []);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+    <div
+      aria-hidden="true"
+      className="intro-root absolute top-0 left-0 w-full h-full overflow-hidden"
+    >
       <Image
         ref={s1}
         src="/sphere.svg"

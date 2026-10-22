@@ -1,27 +1,40 @@
 import { montserrat } from "@/app/fonts";
+import SectionHeading from "@/components/SectionHeading/sectionHeading";
+import ScrollIndicator from "@/components/ScrollIndicator/scrollIndicator";
+import DiagonalStripes from "@/components/DiagonalStripes/diagonalStripes";
+
+const services = [
+  "Brand Blueprints",
+  "CEO Branding",
+  "Content Marketing",
+  "Industry Connections",
+  "Internal Communications",
+  "Media Buying",
+  "Media Relations",
+  "Mission, Vision, Values",
+  "Social Media",
+];
 
 export default function Services() {
   return (
-    <div id="services" className="flex justify-center flex-col h-screen">
-      <div className="flex justify-center items-center px-4 gap-8">
-        <div className="border-12 border-[#026938] rounded-4xl p-4 sm:p-16 flex flex-col gap-4 justify-center items-center">
-          <h2
-            className={`${montserrat.className} text-2xl sm:text-5xl uppercase text-black leading-normal sm:leading-20`}
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="relative isolate flex justify-center flex-col min-h-screen pt-20 pb-28"
+    >
+      <DiagonalStripes />
+      <SectionHeading id="services-heading" tone="dark">Services</SectionHeading>
+      <ul className="grid lg:grid-cols-[auto_auto_auto] justify-center gap-y-4 sm:gap-y-0">
+        {services.map((service, i) => (
+          <li
+            key={service}
+            className={`${montserrat.className} text-xl sm:text-xl xl:text-2xl 2xl:text-3xl uppercase text-black leading-normal sm:leading-20 text-center lg:px-8 ${i % 3 !== 0 ? "lg:border-l-2 lg:border-threepts-green" : ""}`}
           >
-            Capital Markets
-          </h2>
-          <h2
-            className={`${montserrat.className} text-2xl sm:text-5xl uppercase text-black leading-normal sm:leading-20`}
-          >
-            Fractional CMO
-          </h2>
-          <h2
-            className={`${montserrat.className} text-2xl sm:text-5xl uppercase text-black leading-normal sm:leading-20`}
-          >
-            Media Relations
-          </h2>
-        </div>
-      </div>
-    </div>
+            {service}
+          </li>
+        ))}
+      </ul>
+      <ScrollIndicator alwaysVisible />
+    </section>
   );
 }
