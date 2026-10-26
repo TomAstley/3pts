@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { montserrat } from "@/app/fonts";
 
 const TEXT = "Communicate in Threes";
-const THREES_START = TEXT.indexOf("Threes");
+const WORDS = TEXT.split(" ");
 
 const VIEWBOX = "0 0 273 61";
 const SVG_W = 273;
@@ -97,9 +97,9 @@ export default function IntroAnimation() {
         opacity: 1,
         scale: 1,
         filter: "blur(0px) invert(1)",
-        duration: 0.25,
-        ease: "quad.out",
-        stagger: { each: 0.08 },
+        duration: 0.3,
+        ease: "power3.out",
+        stagger: { each: 0.35 },
       }, 0.25);
 
       // Phase 2: text fades out, sphere collapses
@@ -216,9 +216,12 @@ export default function IntroAnimation() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap"
       >
         <p className={`${montserrat.className} text-5xl uppercase`}>
-          {TEXT.split("").map((char, i) => (
-            <span key={i} className={`intro-char opacity-0 inline-block${i >= THREES_START ? " font-bold" : ""}`}>
-              {char === " " ? " " : char}
+          {WORDS.map((word, i) => (
+            <span key={i}>
+              <span className={`intro-char opacity-0 inline-block${i === WORDS.length - 1 ? " font-bold" : ""}`}>
+                {word}
+              </span>
+              {i < WORDS.length - 1 ? " " : null}
             </span>
           ))}
         </p>

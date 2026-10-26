@@ -24,7 +24,7 @@ export default function Home() {
             Communicate in <strong>Threes</strong>
           </span>
           <span
-            className={`${montserrat.className} block text-2xl my-9 max-w-xl mx-auto`}
+            className={`${montserrat.className} block text-2xl my-9 max-w-lg mx-auto`}
           >
             Fractional CMO services for the buy side, sell side, and liquidity
             networks

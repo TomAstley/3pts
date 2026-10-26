@@ -20,7 +20,7 @@ export default function DiagonalStripes({
       {positions.map((position) => (
         <div
           key={position}
-          className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 ${flip ? "-rotate-45" : "rotate-45"} w-75 h-[300%] ${colorClassName} ${position}`}
+          className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 ${flip ? "-rotate-45" : "rotate-45"} w-86.25 h-[300%] ${colorClassName} ${position}`}
         />
       ))}
     </div>
