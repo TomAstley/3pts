@@ -25,7 +25,7 @@ export default function SectionHeading({
   return (
     <h2
       id={id}
-      className={`${montserrat.className} ${className} uppercase tracking-[2px] ${text} my-6 sm:my-14 font-bold text-center`}
+      className={`${montserrat.className} ${className} uppercase tracking-[2px] ${text} my-6 sm:my-14 sm:short:my-8 font-bold text-center`}
     >
       <span className={`inline-block border-b-6 pb-2 ${border}`}>
         {children}

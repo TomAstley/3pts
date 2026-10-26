@@ -6,6 +6,7 @@ import { geistSans, geistMono, montserrat } from "./fonts";
 import Header from "@/components/Header/header";
 import Intake from "@/components/Intake/intake";
 import Footer from "@/components/Footer/footer";
+import BackToTop from "@/components/BackToTop/backToTop";
 
 export const metadata: Metadata = {
   title: "3pts | Fractional CMO Services for Financial Markets",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Intake />
         </main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   );

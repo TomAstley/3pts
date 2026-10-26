@@ -5,7 +5,7 @@ import { submitContact, ContactState } from "@/app/actions";
 import { montserrat } from "@/app/fonts";
 import SectionHeading from "@/components/SectionHeading/sectionHeading";
 
-const inputClass = `${montserrat.className} w-full bg-white/5 border border-white/80 text-white placeholder-white/60 px-4 py-3 rounded-lg focus:outline-2 focus:outline-offset-2 focus:outline-threepts-green focus:border-threepts-green transition-colors`;
+const inputClass = `${montserrat.className} w-full bg-white/5 border border-white/80 text-white px-4 py-3 rounded-lg focus:outline-2 focus:outline-offset-2 focus:outline-threepts-green focus:border-threepts-green transition-colors`;
 const labelClass = `${montserrat.className} block text-sm uppercase tracking-widest text-white/90 mb-2`;
 
 const initial: ContactState = { status: "idle" };
@@ -24,7 +24,7 @@ export default function Intake() {
       <section
         id="contact"
         aria-labelledby="contact-heading"
-        className="flex flex-col items-center justify-center w-full min-h-screen bg-black/85 px-6 py-20"
+        className="flex flex-col items-center justify-center w-full min-h-[calc(100svh-var(--anchor-offset))] bg-black/85 px-6 py-20"
       >
         <div className="w-full max-w-2xl">
           <h2
@@ -49,7 +49,7 @@ export default function Intake() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="flex flex-col items-center justify-center w-full min-h-screen bg-black/85 px-6 py-20"
+      className="flex flex-col items-center justify-center w-full min-h-[calc(100svh-var(--anchor-offset))] bg-black/85 px-6 py-20"
     >
       <div className="w-full max-w-2xl">
         <SectionHeading id="contact-heading" className="text-4xl sm:text-5xl">
@@ -73,7 +73,6 @@ export default function Intake() {
               name="name"
               type="text"
               autoComplete="given-name"
-              placeholder="Jane"
               defaultValue={values?.name}
               className={inputClass}
               required
@@ -89,7 +88,6 @@ export default function Intake() {
               name="company"
               type="text"
               autoComplete="organization"
-              placeholder="Acme Corp"
               defaultValue={values?.company}
               className={inputClass}
             />
@@ -104,7 +102,6 @@ export default function Intake() {
               name="email"
               type="email"
               autoComplete="email"
-              placeholder="jane@example.com"
               defaultValue={values?.email}
               className={inputClass}
               required
@@ -113,7 +110,7 @@ export default function Intake() {
 
           <div>
             <label htmlFor={`${id}-interest`} className={labelClass}>
-              Interest <span aria-hidden="true">*</span>
+              Interest
             </label>
             <div className="relative">
               <select
@@ -121,9 +118,8 @@ export default function Intake() {
                 name="interest"
                 defaultValue={values?.interest ?? ""}
                 className={`${inputClass} appearance-none pr-12`}
-                required
               >
-                <option value="" disabled className="bg-black">Select a service…</option>
+                <option value="" className="bg-black">Select a service…</option>
                 <option value="Strategy" className="bg-black">Strategy</option>
                 <option value="Media Relations" className="bg-black">Media Relations</option>
                 <option value="Content Creation" className="bg-black">Content Creation</option>
@@ -146,6 +142,20 @@ export default function Intake() {
                 <polyline points="2 2 12 12 22 2" />
               </svg>
             </div>
+          </div>
+
+          <div>
+            <label htmlFor={`${id}-message`} className={labelClass}>
+              Message
+            </label>
+            <textarea
+              id={`${id}-message`}
+              name="message"
+              rows={5}
+              maxLength={2000}
+              defaultValue={values?.message}
+              className={`${inputClass} resize-y`}
+            />
           </div>
 
           {state.status === "error" && (

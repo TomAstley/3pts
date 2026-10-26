@@ -20,7 +20,7 @@ export default function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="relative isolate flex justify-center flex-col min-h-screen pt-20 pb-28"
+      className="relative isolate flex justify-center flex-col min-h-[calc(100svh-var(--anchor-offset))] pt-20 pb-28 sm:short:pt-12 sm:short:pb-20"
     >
       <DiagonalStripes />
       <SectionHeading id="services-heading" tone="dark">Services</SectionHeading>
@@ -28,7 +28,7 @@ export default function Services() {
         {services.map((service, i) => (
           <li
             key={service}
-            className={`${montserrat.className} text-xl sm:text-xl xl:text-2xl 2xl:text-3xl uppercase text-black/85 leading-normal sm:leading-20 text-center lg:px-8 ${i % 3 !== 0 ? "lg:border-l-2 lg:border-threepts-green" : ""}`}
+            className={`${montserrat.className} text-xl sm:text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl uppercase text-black/85 leading-normal sm:leading-20 xl:leading-25 2xl:leading-30 3xl:leading-35 text-center lg:px-8 ${i % 3 !== 0 ? "lg:border-l-2 lg:border-threepts-green" : ""}`}
           >
             {service}
           </li>

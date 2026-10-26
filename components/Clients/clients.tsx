@@ -24,17 +24,17 @@ export default function Clients() {
     <section
       id="clients"
       aria-labelledby="clients-heading"
-      className="relative isolate flex flex-col items-center justify-center w-full min-h-screen bg-[#4bbc94] px-3 pt-20 pb-28"
+      className="relative isolate flex flex-col items-center justify-center w-full min-h-[calc(100svh-var(--anchor-offset))] bg-[#4bbc94] px-3 pt-20 pb-28 sm:short:pt-12 sm:short:pb-20"
     >
       <DiagonalStripes flip colorClassName="bg-white/4" />
       <div className="w-full max-w-6xl">
         <SectionHeading id="clients-heading" tone="ink">Clients</SectionHeading>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-8">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-8 sm:short:gap-4">
           {logos.map((logo) => (
             <li
               key={logo.src}
-              className="flex items-center justify-center min-w-0 px-2 sm:px-4 py-3 sm:py-6"
+              className="flex items-center justify-center min-w-0 px-2 sm:px-4 py-3 sm:py-6 sm:short:py-3"
             >
               <img
                 src={`/client-logos/${logo.src}`}

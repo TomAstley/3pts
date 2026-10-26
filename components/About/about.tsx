@@ -5,9 +5,9 @@ import SectionHeading from "@/components/SectionHeading/sectionHeading";
 import DiagonalStripes from "@/components/DiagonalStripes/diagonalStripes";
 
 const stats = [
-  { value: "25+", label: "Years in finance" },
-  { value: "10+", label: "Years running a PR firm" },
-  { value: "CMO", label: "Fractional, on demand" },
+  { value: "25+", label: "Years in fintech marketing" },
+  { value: "15+", label: "Years running a PR firm" },
+  { value: "2+", label: "Years as a fractional CMO" },
 ];
 
 export default function About() {
@@ -15,14 +15,14 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative isolate flex justify-center flex-col min-h-screen bg-threepts-green pt-36 pb-28 md:pt-8 md:pb-24"
+      className="relative isolate flex justify-center flex-col min-h-[calc(100svh-var(--anchor-offset))] bg-threepts-green pt-36 pb-28 md:pt-8 md:pb-24 md:short:pb-16"
     >
       <DiagonalStripes flip colorClassName="bg-white/4" />
       <SectionHeading id="about-heading" tone="ink">
         About
       </SectionHeading>
       <div className="flex flex-col md:flex-row justify-center items-center px-8 gap-12 md:gap-16 max-w-7xl mx-auto">
-        <div className="relative w-full max-w-70 md:max-w-100 shrink-0 md:mt-8">
+        <div className="relative w-full max-w-70 md:max-w-100 md:short:max-w-85 shrink-0 md:mt-8 md:short:mt-0">
           <Image
             src="/drew.jpg"
             alt="Portrait of Drew"

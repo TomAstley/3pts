@@ -5,6 +5,7 @@
   --background: #ffffff;
   --foreground: #171717d9;
   --intro-delay: 7.5s;
+  --anchor-offset: 8rem;
 }
 
 @media (max-width: 639px) {
@@ -12,6 +13,8 @@
     --intro-delay: 4.3s;
   }
 }
+
+@custom-variant short (@media (max-height: 50rem));
 
 @theme inline {
   --color-background: var(--background);
@@ -22,6 +25,7 @@
   --color-threepts-indigo-dark: #4630ab;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --breakpoint-3xl: 120rem;
   --animate-fade-in: fade-in 1.5s ease-out var(--intro-delay) both;
   --animate-nav-slide-in: nav-slide-in 0.35s ease-out var(--intro-delay) both;
 }
@@ -37,7 +41,7 @@
 }
 
 html {
-  scroll-padding-top: 8rem;
+  scroll-padding-top: var(--anchor-offset);
 }
 
 @media (prefers-reduced-motion: no-preference) {

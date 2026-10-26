@@ -9,6 +9,7 @@ export type ContactValues = {
   company: string;
   email: string;
   interest: string;
+  message: string;
 };
 
 export type ContactState = {
@@ -26,13 +27,13 @@ export async function submitContact(
     company: (formData.get("company") as string) ?? "",
     email: (formData.get("email") as string) ?? "",
     interest: (formData.get("interest") as string) ?? "",
+    message: ((formData.get("message") as string) ?? "").slice(0, 2000),
   };
-  const { name, company, email, interest } = values;
+  const { name, company, email, interest, message } = values;
 
   const missing = [
     !name && "first name",
     !email && "email",
-    !interest && "interest",
   ].filter(Boolean);
 
   if (missing.length > 0) {
@@ -48,7 +49,7 @@ export async function submitContact(
     to: process.env.CONTACT_EMAIL!,
     replyTo: email,
     subject: `New inquiry from ${name}${company ? ` at ${company}` : ""}`,
-    text: `Name: ${name}\nCompany: ${company || "—"}\nEmail: ${email}\nInterest: ${interest}`,
+    text: `Name: ${name}\nCompany: ${company || "—"}\nEmail: ${email}\nInterest: ${interest || "—"}\n\nMessage:\n${message.trim() || "—"}`,
   });
 
   if (error) {
