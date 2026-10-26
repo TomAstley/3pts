@@ -21,14 +21,14 @@ export default function About() {
       <SectionHeading id="about-heading" tone="ink">
         About
       </SectionHeading>
-      <div className="flex flex-col md:flex-row justify-center items-center px-8 gap-12 md:gap-16 max-w-7xl mx-auto">
-        <div className="relative w-full max-w-70 md:max-w-100 md:short:max-w-85 shrink-0 md:mt-8 md:short:mt-0">
+      <div className="flex flex-col md:flex-row justify-center items-center md:items-start px-8 gap-12 md:gap-16 max-w-7xl mx-auto">
+        <div className="relative w-full max-w-100 md:max-w-72 md:short:max-w-61.2 shrink-0">
           <Image
             src="/drew.jpg"
             alt="Portrait of Drew"
             width={400}
             height={400}
-            className="relative w-full h-auto border-8 border-white rounded-4xl shadow-2xl"
+            className="relative w-full h-auto border-4 border-white rounded-3xl shadow-2xl"
           />
         </div>
         <div className={montserrat.className}>
@@ -36,10 +36,18 @@ export default function About() {
             Industry expertise is my competitive advantage.
           </p>
           <p className="mt-4 text-lg leading-relaxed">
-            I&apos;m a marketing and communications professional with 25+ years
+            I&rsquo;m a marketing and communications professional with 25+ years
             of finance experience. After building and operating a highly
             effective public relations firm, I now partner with clients as a
-            fractional CMO. I either augment the marketing function or lead it.
+            fractional CMO—strengthening their marketing function or leading it.
+          </p>
+          <p className="mt-4 text-lg leading-relaxed">
+            I operate with Christian principles, bringing integrity, generosity,
+            and a spirit of service to every relationship. I excel when we
+            establish clear goals together and work toward them with shared
+            purpose. Along the way, I&rsquo;m a multiplier of goodwill and
+            positivity—building trust, strengthening teams, and creating
+            momentum.
           </p>
           <dl className="mt-5 grid grid-cols-3 gap-4 border-t-2 border-black/20 pt-6">
             {stats.map(({ value, label }) => (
