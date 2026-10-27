@@ -5,6 +5,7 @@ import ScrollIndicator from "@/components/ScrollIndicator/scrollIndicator";
 import About from "@/components/About/about";
 import Services from "@/components/Services/services";
 import Clients from "@/components/Clients/clients";
+import Testimonials from "@/components/Testimonials/testimonials";
 import DiagonalStripes from "@/components/DiagonalStripes/diagonalStripes";
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
       <About />
       <Services />
       <Clients />
+      <Testimonials />
     </>
   );
 }

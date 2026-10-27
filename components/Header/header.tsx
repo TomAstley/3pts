@@ -43,7 +43,7 @@ export default function Header() {
           </a>
           <span aria-hidden="true" className="inline-block w-[2px] h-[25px] bg-[#4bbc94] rotate-[20deg]" />
           <a href="#services" className="text-[#026938] hover:underline">
-            Marketing Services
+            Services
           </a>
           <span aria-hidden="true" className="inline-block w-[2px] h-[25px] bg-[#4bbc94] rotate-[20deg]" />
 
@@ -91,7 +91,7 @@ export default function Header() {
             About
           </a>
           <a href="#services" onClick={() => setOpen(false)} className={mobileLinkClass}>
-            Marketing Services
+            Services
           </a>
           <a href="#clients" onClick={() => setOpen(false)} className={mobileLinkClass}>
             Clients

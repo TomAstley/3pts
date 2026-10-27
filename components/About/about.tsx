@@ -39,7 +39,7 @@ export default function About() {
             I&rsquo;m a marketing and communications professional with 25+ years
             of finance experience. After building and operating a highly
             effective public relations firm, I now partner with clients as a
-            fractional CMO—strengthening their marketing function or leading it.
+            fractional Chief Marketing Officer—strengthening their marketing function or leading it.
           </p>
           <p className="mt-4 text-lg leading-relaxed">
             I operate with Christian principles, bringing integrity, generosity,
