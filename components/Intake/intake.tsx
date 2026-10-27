@@ -109,42 +109,6 @@ export default function Intake() {
           </div>
 
           <div>
-            <label htmlFor={`${id}-interest`} className={labelClass}>
-              Interest
-            </label>
-            <div className="relative">
-              <select
-                id={`${id}-interest`}
-                name="interest"
-                defaultValue={values?.interest ?? ""}
-                className={`${inputClass} appearance-none pr-12`}
-              >
-                <option value="" className="bg-black">Select a service…</option>
-                <option value="Strategy" className="bg-black">Strategy</option>
-                <option value="Media Relations" className="bg-black">Media Relations</option>
-                <option value="Content Creation" className="bg-black">Content Creation</option>
-                <option value="Social Media" className="bg-black">Social Media</option>
-                <option value="Capital Markets" className="bg-black">Capital Markets</option>
-                <option value="Other" className="bg-black">Other</option>
-              </select>
-              <svg
-                aria-hidden="true"
-                width="16"
-                height="10"
-                viewBox="0 0 24 14"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white"
-              >
-                <polyline points="2 2 12 12 22 2" />
-              </svg>
-            </div>
-          </div>
-
-          <div>
             <label htmlFor={`${id}-message`} className={labelClass}>
               Message
             </label>
