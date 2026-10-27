@@ -9,7 +9,7 @@ import Footer from "@/components/Footer/footer";
 import BackToTop from "@/components/BackToTop/backToTop";
 
 export const metadata: Metadata = {
-  title: "3pts | Fractional CMO Services for Financial Markets",
+  title: "3Points | Fractional CMO Services for Financial Markets",
   description:
     "Three Points Communications provides fractional CMO services for the buy side, sell side, and liquidity networks.",
 };
