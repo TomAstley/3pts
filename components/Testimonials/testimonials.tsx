@@ -15,13 +15,13 @@ const testimonials = [
   },
   {
     quote:
-      "I've had the pleasure of working with Drew and the team at 3Points for several years. Not only are he and his team experts in a wide variety of PR services, but their creativity and dedication to client service are always top-notch. I recommend Drew and his team to companies and their leaders that are looking to enhance their reputation and thought-leadership in their industry.",
-     author: "James Swartwout",
+      "We worked with Drew when we first launched tradeMONSTER and then again last year after 3 Points was well established under Drew's capable leadership. He has done an exceptional job for us in delivering high quality introductions and placements and will certainly be an integral part of the TM marketing plan going forward.",
+    author: "James Swartwout",
     role: "CEO, Prosperum Fintech",
   },
   {
     quote:
-      "We worked with Drew when we first launched tradeMONSTER and then again last year after 3 Points was well established under Drew's capable leadership. He has done an exceptional job for us in delivering high quality introductions and placements and will certainly be an integral part of the TM marketing plan going forward.",
+      "I've had the pleasure of working with Drew and the team at 3Points for several years. Not only are he and his team experts in a wide variety of PR services, but their creativity and dedication to client service are always top-notch. I recommend Drew and his team to companies and their leaders that are looking to enhance their reputation and thought-leadership in their industry.",
     author: "Jeremie Bacon",
     role: "General Partner, SENU Venture Partners",
   },
