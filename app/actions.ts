@@ -63,7 +63,7 @@ export async function submitContact(
   const { name, company, email, message } = values;
 
   const missing = [
-    !name && "first name",
+    !name && "name",
     !email && "email",
   ].filter(Boolean);
 

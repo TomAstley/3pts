@@ -77,13 +77,13 @@ export default function Intake() {
 
           <div>
             <label htmlFor={`${id}-name`} className={labelClass}>
-              First Name <span aria-hidden="true">*</span>
+              Name <span aria-hidden="true">*</span>
             </label>
             <input
               id={`${id}-name`}
               name="name"
               type="text"
-              autoComplete="given-name"
+              autoComplete="name"
               defaultValue={values?.name}
               className={inputClass}
               required
