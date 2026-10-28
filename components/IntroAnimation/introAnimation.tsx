@@ -5,11 +5,9 @@ import Image from "next/image";
 import gsap from "gsap";
 import { montserrat } from "@/app/fonts";
 
-const INTRO_SEEN_KEY = "intro-seen";
-
-const skipIntro = () => {
-  document.documentElement.dataset.skipIntro = "";
-};
+// Keep in sync with the inline script in app/layout.tsx.
+const INTRO_VIEWS_KEY = "intro-views";
+const MAX_INTRO_VIEWS = 3;
 
 const TEXT = "Communicate in Threes";
 const WORDS = TEXT.split(" ");
@@ -48,8 +46,9 @@ export default function IntroAnimation() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     try {
-      if (sessionStorage.getItem(INTRO_SEEN_KEY)) return;
-      sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+      const views = Number(localStorage.getItem(INTRO_VIEWS_KEY)) || 0;
+      if (views >= MAX_INTRO_VIEWS) return;
+      localStorage.setItem(INTRO_VIEWS_KEY, String(views + 1));
     } catch {}
 
     // CSS animations (hero fade-in, nav) run on wall-clock time; without this,
@@ -189,14 +188,6 @@ export default function IntroAnimation() {
   }, []);
 
   return (
-    <>
-    <button
-      type="button"
-      onClick={skipIntro}
-      className={`${montserrat.className} intro-skip fixed bottom-6 right-6 z-60 uppercase tracking-widest text-xs font-bold text-black/70 hover:text-black px-3 py-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black`}
-    >
-      Skip intro
-    </button>
     <div
       aria-hidden="true"
       className="intro-root absolute top-0 left-0 w-full h-full overflow-hidden"
@@ -325,6 +316,5 @@ export default function IntroAnimation() {
         </div>
       </div>
     </div>
-    </>
   );
 }

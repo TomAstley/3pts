@@ -42,7 +42,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem("intro-seen"))document.documentElement.dataset.skipIntro=""}catch(e){}`,
+            __html: `try{if(Number(localStorage.getItem("intro-views"))>=3)document.documentElement.dataset.skipIntro=""}catch(e){}`,
           }}
         />
       </head>
