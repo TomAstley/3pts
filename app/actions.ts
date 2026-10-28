@@ -85,9 +85,10 @@ export async function submitContact(
 
   const { RESEND_API_KEY, CONTACT_EMAIL, CONTACT_FROM } = process.env;
   if (!RESEND_API_KEY || !CONTACT_EMAIL || !CONTACT_FROM) {
-    console.error(
-      "Contact form misconfigured: RESEND_API_KEY, CONTACT_EMAIL and CONTACT_FROM must all be set."
-    );
+    const unset = Object.entries({ RESEND_API_KEY, CONTACT_EMAIL, CONTACT_FROM })
+      .filter(([, v]) => !v)
+      .map(([k]) => k);
+    console.error(`Contact form misconfigured: missing ${unset.join(", ")}.`);
     return {
       status: "error",
       message: "Something went wrong. Please try again.",
