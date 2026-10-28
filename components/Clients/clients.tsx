@@ -16,7 +16,7 @@ const logos = [
   { src: "logo-tt-full.svg", alt: "Trading Technologies", href: "https://tradingtechnologies.com", size: "h-10 sm:h-auto sm:max-h-20" },
   { src: "memx.svg", alt: "MEMX", href: "https://memx.com", size: "h-12 sm:h-auto sm:max-h-12" },
   { src: "optionshouse-logo-e1512330098848.png", alt: "OptionsHouse", href: "https://www.generalatlantic.com/investment/optionshouse/", size: "h-10 sm:h-auto sm:max-h-10" },
-  { src: "transient-logo-on-dark.svg", alt: "Transient", href: "https://www.transient.com", size: "h-16 sm:h-auto sm:max-h-20" },
+  { src: "transient-logo-on-dark.svg", alt: "Transient", href: "https://www.transient.ai/", size: "h-16 sm:h-auto sm:max-h-20" },
 ];
 
 export default function Clients() {

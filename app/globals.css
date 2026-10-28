@@ -14,6 +14,23 @@
   }
 }
 
+html[data-skip-intro] {
+  --intro-delay: 0s;
+}
+
+html[data-skip-intro] .intro-root,
+html[data-skip-intro] .intro-skip {
+  display: none;
+}
+
+.intro-skip {
+  animation: intro-skip-hide 0s linear var(--intro-delay) forwards;
+}
+
+@keyframes intro-skip-hide {
+  to { opacity: 0; visibility: hidden; }
+}
+
 @custom-variant short (@media (max-height: 50rem));
 
 @theme inline {
@@ -58,7 +75,8 @@ html {
     transition-duration: 0.01ms !important;
   }
 
-  .intro-root {
+  .intro-root,
+  .intro-skip {
     display: none;
   }
 }

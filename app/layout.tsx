@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { geistSans, geistMono, montserrat } from "./fonts";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "./site";
 
 // components
 import Header from "@/components/Header/header";
@@ -9,9 +10,22 @@ import Footer from "@/components/Footer/footer";
 import BackToTop from "@/components/BackToTop/backToTop";
 
 export const metadata: Metadata = {
-  title: "3Points | Fractional CMO Services for Financial Markets",
-  description:
-    "Three Points Communications provides fractional CMO services for the buy side, sell side, and liquidity networks.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +37,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("intro-seen"))document.documentElement.dataset.skipIntro=""}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <a
           href="#main"

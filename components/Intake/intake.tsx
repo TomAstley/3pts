@@ -64,6 +64,17 @@ export default function Intake() {
         </p>
 
         <form action={action} className="flex flex-col gap-6">
+          <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+            <label htmlFor={`${id}-website`}>Website</label>
+            <input
+              id={`${id}-website`}
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div>
             <label htmlFor={`${id}-name`} className={labelClass}>
               First Name <span aria-hidden="true">*</span>
