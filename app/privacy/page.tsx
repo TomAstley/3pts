@@ -40,8 +40,9 @@ export default function PrivacyPolicy() {
       <p className={pClass}>
         This policy explains what information {SITE_NAME} (&ldquo;we,&rdquo;
         &ldquo;us&rdquo;) collects through this website, how we use it, and the
-        choices you have. This is a marketing website; the only way it collects
-        personal information is through the contact form.
+        choices you have. This is a marketing website. We collect personal
+        information you choose to send us through the contact form, and we use
+        an analytics service to understand how the site is used.
       </p>
 
       <h2 className={h2Class}>Information we collect</h2>
@@ -59,19 +60,36 @@ export default function PrivacyPolicy() {
         IP address, browser type, and pages requested) for security and
         operational purposes.
       </p>
+      <p className={pClass}>
+        <strong>Analytics and usage information.</strong> When you visit the
+        site, we use PostHog, a product analytics service, to collect
+        information about your visit: the pages you view, your clicks and
+        interactions, your approximate location derived from your IP address,
+        your device, browser, and operating system, the site that referred you,
+        and an anonymous identifier stored in your browser. We also use PostHog
+        to record sessions, which are replays of how you move through and
+        interact with the pages, and to capture technical errors. The text you
+        type into form fields, including the contact form, is masked and is not
+        included in these recordings. We do not use this data to identify you
+        personally.
+      </p>
 
       <h2 className={h2Class}>How we use your information</h2>
       <p className={pClass}>
         We use the information you submit only to read and respond to your
-        inquiry and to discuss potential work together. We do not sell your
-        information, and we do not use it for advertising.
+        inquiry and to discuss potential work together. We use analytics and
+        session recordings to understand how visitors use the site, fix errors,
+        and improve it. We do not sell your information, and we do not use it
+        for advertising.
       </p>
 
       <h2 className={h2Class}>How your information is shared</h2>
       <p className={pClass}>
         Your submission is sent as an email to a single recipient at{" "}
         {SITE_NAME}. To deliver it, we use Resend, an email delivery service that
-        processes the message on our behalf. Our website is hosted by a
+        processes the message on our behalf. We use PostHog, which processes
+        analytics, session recordings, and error reports on our behalf and
+        stores that data in the United States. Our website is hosted by a
         third-party hosting provider. These providers handle data only as needed
         to provide their services to us. We may also disclose information if
         required by law.
@@ -79,12 +97,15 @@ export default function PrivacyPolicy() {
 
       <h2 className={h2Class}>Cookies and local storage</h2>
       <p className={pClass}>
-        This site does not use cookies, advertising trackers, or analytics. It
-        stores one small value in your browser&rsquo;s local storage, a counter
-        of how many times you have seen the opening animation, so that the
-        animation stops playing on repeat visits. This value stays on your
-        device and is never sent to us. You can clear it at any time through
-        your browser settings.
+        This site does not use advertising cookies or advertising trackers.
+        PostHog stores an anonymous identifier in a cookie and in your
+        browser&rsquo;s local storage so that it can recognize repeat visits
+        and link your page views together into a session. The site also stores
+        one small value in local storage, a counter of how many times you have
+        seen the opening animation, so that the animation stops playing on
+        repeat visits; this value stays on your device and is never sent to
+        us. You can clear cookies and local storage at any time through your
+        browser settings, or block them, and the site will continue to work.
       </p>
 
       <h2 className={h2Class}>Retention</h2>
