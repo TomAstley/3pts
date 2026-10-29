@@ -29,14 +29,16 @@ export default function Header() {
       <header
         className={`flex items-center justify-between w-full h-30 px-5 bg-white shadow-md fixed z-50 ${isHome ? "animate-nav-slide-in" : ""}`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/3pts-logo.svg"
-          alt="Three Points Communications"
-          width={273}
-          height={61}
-          className="h-15.5 md:h-20 w-auto"
-        />
+        <Link href="/" aria-label="Three Points Communications home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/3pts-logo.svg"
+            alt="Three Points Communications"
+            width={273}
+            height={61}
+            className="h-15.5 md:h-20 w-auto"
+          />
+        </Link>
 
         {/* Desktop nav */}
         <nav
