@@ -10,7 +10,7 @@ import DiagonalStripes from "@/components/DiagonalStripes/diagonalStripes";
 const logos = [
   { src: "CHX_logo.png", alt: "CHX", href: "https://www.txse.com/", size: "h-16 sm:h-auto sm:max-h-18" },
   { src: "ice-logo.svg", alt: "Intercontinental Exchange", href: "https://www.ice.com", size: "h-18 sm:h-auto sm:max-h-20" },
-  { src: "SpiderRock-Logo-Horizontal-Color-updated.svg", alt: "SpiderRock", href: "https://spiderrock.com", size: "h-14 sm:h-auto sm:max-h-20" },
+  { src: "SpiderRock-Logo-Horizontal-Color-updated.svg", alt: "SpiderRock", href: "https://spiderrock.net/", size: "h-14 sm:h-auto sm:max-h-20" },
   { src: "copper.svg", alt: "Copper", href: "https://copper.co", size: "h-11 sm:h-auto sm:max-h-10" },
   { src: "drw.svg", alt: "DRW", href: "https://drw.com", size: "h-11 sm:h-auto sm:max-h-10" },
   { src: "logo-tt-full.svg", alt: "Trading Technologies", href: "https://tradingtechnologies.com", size: "h-10 sm:h-auto sm:max-h-20" },
