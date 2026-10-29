@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { montserrat } from "@/app/fonts";
 
 const mobileLinkClass = `${montserrat.className} text-black/85 text-4xl uppercase font-bold`;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const isHome = usePathname() === "/";
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // Native modal <dialog> handles focus trapping, Escape, inert background, and focus return.
@@ -23,7 +26,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between w-full h-30 px-5 bg-white shadow-md fixed animate-nav-slide-in z-50">
+      <header
+        className={`flex items-center justify-between w-full h-30 px-5 bg-white shadow-md fixed z-50 ${isHome ? "animate-nav-slide-in" : ""}`}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/3pts-logo.svg"
@@ -38,18 +43,18 @@ export default function Header() {
           aria-label="Primary"
           className="hidden md:flex items-center space-x-3 text-lg font-semibold"
         >
-          <a href="#about" className="text-[#026938] hover:underline">
+          <Link href="/#about" className="text-[#026938] hover:underline">
             About
-          </a>
+          </Link>
           <span aria-hidden="true" className="inline-block w-[2px] h-[25px] bg-[#4bbc94] rotate-[20deg]" />
-          <a href="#services" className="text-[#026938] hover:underline">
+          <Link href="/#services" className="text-[#026938] hover:underline">
             Services
-          </a>
+          </Link>
           <span aria-hidden="true" className="inline-block w-[2px] h-[25px] bg-[#4bbc94] rotate-[20deg]" />
 
-          <a href="#clients" className="text-[#026938] hover:underline">
+          <Link href="/#clients" className="text-[#026938] hover:underline">
             Clients
-          </a>
+          </Link>
         </nav>
 
         {/* Hamburger button */}
@@ -87,18 +92,18 @@ export default function Header() {
         </button>
 
         <nav aria-label="Mobile" className="flex flex-col gap-8 mt-16">
-          <a href="#about" onClick={() => setOpen(false)} className={mobileLinkClass}>
+          <Link href="/#about" onClick={() => setOpen(false)} className={mobileLinkClass}>
             About
-          </a>
-          <a href="#services" onClick={() => setOpen(false)} className={mobileLinkClass}>
+          </Link>
+          <Link href="/#services" onClick={() => setOpen(false)} className={mobileLinkClass}>
             Services
-          </a>
-          <a href="#clients" onClick={() => setOpen(false)} className={mobileLinkClass}>
+          </Link>
+          <Link href="/#clients" onClick={() => setOpen(false)} className={mobileLinkClass}>
             Clients
-          </a>
-          <a href="#contact" onClick={() => setOpen(false)} className={mobileLinkClass}>
+          </Link>
+          <Link href="/#contact" onClick={() => setOpen(false)} className={mobileLinkClass}>
             Contact
-          </a>
+          </Link>
         </nav>
       </dialog>
     </>

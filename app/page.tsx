@@ -7,6 +7,7 @@ import Services from "@/components/Services/services";
 import Clients from "@/components/Clients/clients";
 import Testimonials from "@/components/Testimonials/testimonials";
 import DiagonalStripes from "@/components/DiagonalStripes/diagonalStripes";
+import Intake from "@/components/Intake/intake";
 
 export default function Home() {
   return (
@@ -43,6 +44,7 @@ export default function Home() {
       <Services />
       <Clients />
       <Testimonials />
+      <Intake />
     </>
   );
 }

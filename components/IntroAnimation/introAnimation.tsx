@@ -47,7 +47,10 @@ export default function IntroAnimation() {
 
     try {
       const views = Number(localStorage.getItem(INTRO_VIEWS_KEY)) || 0;
-      if (views >= MAX_INTRO_VIEWS) return;
+      if (views >= MAX_INTRO_VIEWS) {
+        document.documentElement.dataset.skipIntro = "";
+        return;
+      }
       localStorage.setItem(INTRO_VIEWS_KEY, String(views + 1));
     } catch {}
 

@@ -1,7 +1,10 @@
 "use server";
 
+import { SeverityNumber } from "@opentelemetry/api-logs";
 import { headers } from "next/headers";
+import { after } from "next/server";
 import { Resend } from "resend";
+import { contactFormLogger, posthogLogProvider } from "@/instrumentation";
 
 export type ContactValues = {
   name: string;
@@ -47,6 +50,21 @@ const field = (formData: FormData, key: string, max: number) =>
 
 const singleLine = (s: string) => s.replace(/[\r\n]+/g, " ").trim();
 
+function logContactForm(
+  severityNumber: SeverityNumber,
+  body: string,
+  attributes: Record<string, string>
+) {
+  contactFormLogger?.emit({ body, severityNumber, attributes });
+
+  const logProvider = posthogLogProvider;
+  if (logProvider) {
+    after(async () => {
+      await logProvider.forceFlush();
+    });
+  }
+}
+
 export async function submitContact(
   _prev: ContactState,
   formData: FormData
@@ -68,6 +86,11 @@ export async function submitContact(
   ].filter(Boolean);
 
   if (missing.length > 0) {
+    logContactForm(
+      SeverityNumber.WARN,
+      "contact_form_rejected",
+      { reason: "required_fields_missing" }
+    );
     return {
       status: "error",
       message: `Please fill in: ${missing.join(", ")}.`,
@@ -76,6 +99,11 @@ export async function submitContact(
   }
 
   if (!EMAIL_RE.test(email)) {
+    logContactForm(
+      SeverityNumber.WARN,
+      "contact_form_rejected",
+      { reason: "invalid_email_format" }
+    );
     return {
       status: "error",
       message: "Please enter a valid email address.",
@@ -89,6 +117,11 @@ export async function submitContact(
       .filter(([, v]) => !v)
       .map(([k]) => k);
     console.error(`Contact form misconfigured: missing ${unset.join(", ")}.`);
+    logContactForm(
+      SeverityNumber.ERROR,
+      "contact_form_delivery_unavailable",
+      { reason: "email_delivery_configuration_missing" }
+    );
     return {
       status: "error",
       message: "Something went wrong. Please try again.",
@@ -99,6 +132,11 @@ export async function submitContact(
   const h = await headers();
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (rateLimited(ip)) {
+    logContactForm(
+      SeverityNumber.WARN,
+      "contact_form_rate_limited",
+      { limiter: "contact_form" }
+    );
     return {
       status: "error",
       message: "Too many requests. Please try again in a few minutes.",
@@ -117,6 +155,11 @@ export async function submitContact(
 
   if (error) {
     console.error("Resend error:", error);
+    logContactForm(
+      SeverityNumber.ERROR,
+      "contact_form_delivery_failed",
+      { provider: "resend" }
+    );
     return {
       status: "error",
       message: "Something went wrong. Please try again.",
@@ -124,5 +167,10 @@ export async function submitContact(
     };
   }
 
+  logContactForm(
+    SeverityNumber.INFO,
+    "contact_form_delivered",
+    { provider: "resend" }
+  );
   return { status: "success" };
 }

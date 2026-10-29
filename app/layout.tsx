@@ -5,7 +5,6 @@ import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "./site";
 
 // components
 import Header from "@/components/Header/header";
-import Intake from "@/components/Intake/intake";
 import Footer from "@/components/Footer/footer";
 import BackToTop from "@/components/BackToTop/backToTop";
 
@@ -56,7 +55,6 @@ export default function RootLayout({
         <Header />
         <main id="main" className="flex-1">
           {children}
-          <Intake />
         </main>
         <Footer />
         <BackToTop />

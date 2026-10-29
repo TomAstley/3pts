@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -10,6 +11,11 @@ export default function Footer() {
           rights reserved.
         </p>
       </div>
+      <p className="text-black/70 text-sm">
+        <Link href="/privacy" className="underline hover:text-threepts-dark-green">
+          Privacy Policy
+        </Link>
+      </p>
       <p className="text-black/70 text-sm">
         Designed + Developed by{" "}
         <a

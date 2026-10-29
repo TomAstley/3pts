@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useId, useRef } from "react";
+import posthog from "posthog-js";
 import { submitContact, ContactState } from "@/app/actions";
 import { montserrat } from "@/app/fonts";
 import SectionHeading from "@/components/SectionHeading/sectionHeading";
@@ -63,7 +64,11 @@ export default function Intake() {
           <span className="sr-only">with an asterisk</span> are required.
         </p>
 
-        <form action={action} className="flex flex-col gap-6">
+        <form
+          action={action}
+          onSubmit={() => posthog.capture("contact_form_submitted")}
+          className="flex flex-col gap-6"
+        >
           <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
             <label htmlFor={`${id}-website`}>Website</label>
             <input
